@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_03498pw" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="Decision_0tap8hd" name="TimeOfDay">
+    <decisionTable id="DecisionTable_1bfyph3" hitPolicy="FIRST">
+      <input id="Input_1" label="timeOfDay">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_07fvgui">
+          <text>"breakfast","lunch","dinner","dessert"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="timeFilteredMeals" typeRef="string" biodi:width="365" />
+      <rule id="DecisionRule_08y4fy6">
+        <inputEntry id="UnaryTests_1kohuzy">
+          <text>"breakfast"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vzi0ua">
+          <text>["peanut_butter_toast", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pbjnas">
+        <inputEntry id="UnaryTests_166oqtw">
+          <text>"lunch"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1md207w">
+          <text>["caprese_salad", "chicken_rice_bowl", "vegetable_rice", "pasta_al_pomodoro", "grilled_vegetables", "garden_salad", "chicken_salad", "ravioli_ricotta_spinach", "vegetarian_arancini"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cr2iyd">
+        <inputEntry id="UnaryTests_0khk5km">
+          <text>"dinner"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c2hr33">
+          <text>["tofu_stir_fry", "grilled_chicken", "mediterranean_plate", "pasta_alla_carbonara", "eggplant_parmigiana", "salmon_plate", "pizza_margherita", "pizza_prosciutto", "pizza_truffle", "duck_ragu_pasta", "beef_steak_plate", "mixed_grill"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ltyirk">
+        <inputEntry id="UnaryTests_1jnlvyv">
+          <text>"dessert"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_086yk9q">
+          <text>"tiramisu"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_07tdelu" name="DietaryRestriction">
+    <decisionTable id="DecisionTable_0qp5j1w" hitPolicy="FIRST">
+      <input id="InputClause_1r3blsm" label="dietaryRestriction">
+        <inputExpression id="LiteralExpression_1qku2z7" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0roejh7">
+          <text>"vegan","vegetarian","carnivore","norestriction"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_16vd6i3" label="restrictionFilteredMeals" typeRef="string" biodi:width="437" />
+      <rule id="DecisionRule_1hqkh6d">
+        <inputEntry id="UnaryTests_0jcsmw3">
+          <text>"vegan"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01t3z05">
+          <text>["tofu_stir_fry", "vegetable_rice", "mediterranean_plate", "grilled_vegetables", "garden_salad", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r7k7jt">
+        <inputEntry id="UnaryTests_132hvxs">
+          <text>"vegetarian"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e2lfn3">
+          <text>["caprese_salad", "tofu_stir_fry", "peanut_butter_toast", "vegetable_rice", "mediterranean_plate", "pasta_al_pomodoro", "eggplant_parmigiana", "grilled_vegetables", "garden_salad", "pizza_margherita", "pizza_truffle", "ravioli_ricotta_spinach", "vegetarian_arancini", "tiramisu", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c8p7ol">
+        <inputEntry id="UnaryTests_1j0q0z6">
+          <text>"carnivore"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o654pu">
+          <text>["chicken_rice_bowl", "grilled_chicken", "pasta_alla_carbonara", "salmon_plate", "chicken_salad", "pizza_prosciutto", "duck_ragu_pasta", "beef_steak_plate", "mixed_grill"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17qflf3">
+        <inputEntry id="UnaryTests_10ofsf2">
+          <text>"norestriction"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ljegt3">
+          <text>["caprese_salad", "chicken_rice_bowl", "tofu_stir_fry", "peanut_butter_toast", "grilled_chicken", "vegetable_rice", "mediterranean_plate", "pasta_alla_carbonara", "pasta_al_pomodoro", "eggplant_parmigiana", "salmon_plate", "grilled_vegetables", "garden_salad", "chicken_salad", "pizza_margherita", "pizza_prosciutto", "pizza_truffle", "duck_ragu_pasta", "ravioli_ricotta_spinach", "beef_steak_plate", "mixed_grill", "vegetarian_arancini", "tiramisu", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1xjdr5z" name="Allergy">
+    <decisionTable id="DecisionTable_1vktayr" hitPolicy="COLLECT">
+      <input id="InputClause_1bcbjfb" label="Allergy">
+        <inputExpression id="LiteralExpression_1nvmame" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0ohoect">
+          <text>"dairy","gluten","peanuts","noallergy"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_1uj9i5s" label="SafeMeals" typeRef="string" biodi:width="391" />
+      <rule id="DecisionRule_1g9dncm">
+        <inputEntry id="UnaryTests_0e4txll">
+          <text>"dairy"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0djymw0">
+          <text>["tomato", "chicken_rice_bowl", "tofu_stir_fry", "peanut_butter_toast", "grilled_chicken", "vegetable_rice", "mediterranean_plate", "salmon_plate", "grilled_vegetables", "garden_salad", "chicken_salad", "duck_ragu_pasta", "beef_steak_plate", "mixed_grill", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vudbtp">
+        <inputEntry id="UnaryTests_07ywm9n">
+          <text>"gluten"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yxoibe">
+          <text>["caprese_salad", "chicken_rice_bowl", "tofu_stir_fry", "grilled_chicken", "vegetable_rice", "mediterranean_plate", "eggplant_parmigiana", "salmon_plate", "grilled_vegetables", "garden_salad", "chicken_salad", "beef_steak_plate", "mixed_grill", "vegetarian_arancini", "tiramisu"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1t0c6l8">
+        <inputEntry id="UnaryTests_1dsd91z">
+          <text>"peanuts"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0buet95">
+          <text>["caprese_salad", "chicken_rice_bowl", "tofu_stir_fry", "grilled_chicken", "vegetable_rice", "mediterranean_plate", "pasta_alla_carbonara", "pasta_al_pomodoro", "eggplant_parmigiana", "salmon_plate", "grilled_vegetables", "garden_salad", "chicken_salad", "pizza_margherita", "pizza_prosciutto", "pizza_truffle", "duck_ragu_pasta", "ravioli_ricotta_spinach", "beef_steak_plate", "mixed_grill", "vegetarian_arancini", "tiramisu", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rdkv63">
+        <inputEntry id="UnaryTests_012xrtb">
+          <text>"noallergy"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v7a4mx">
+          <text>["caprese_salad", "chicken_rice_bowl", "tofu_stir_fry", "peanut_butter_toast", "grilled_chicken", "vegetable_rice", "mediterranean_plate", "pasta_alla_carbonara", "pasta_al_pomodoro", "eggplant_parmigiana", "salmon_plate", "grilled_vegetables", "garden_salad", "chicken_salad", "pizza_margherita", "pizza_prosciutto", "pizza_truffle", "duck_ragu_pasta", "ravioli_ricotta_spinach", "beef_steak_plate", "mixed_grill", "vegetarian_arancini", "tiramisu", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_141sd4t" name="NutritionalGoal">
+    <decisionTable id="DecisionTable_0yfvcys" hitPolicy="FIRST">
+      <input id="InputClause_0pxdsfo" label="NutritionGoal">
+        <inputExpression id="LiteralExpression_0mq5rf7" typeRef="string" />
+        <inputValues id="UnaryTests_0khebcm">
+          <text>"weight_loss","muscle_gain","nogoals"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_0uafhbz" label="goalFilteredMeals" typeRef="string" biodi:width="403" />
+      <rule id="DecisionRule_1tx9h2e">
+        <inputEntry id="UnaryTests_090rdlk">
+          <text>"weight_loss"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wdev9o">
+          <text>["caprese_salad", "tofu_stir_fry", "vegetable_rice", "mediterranean_plate", "pasta_al_pomodoro", "grilled_vegetables", "garden_salad"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f9ln2p">
+        <inputEntry id="UnaryTests_1ibxrqc">
+          <text>"muscle_gain"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m622my">
+          <text>["chicken_rice_bowl", "peanut_butter_toast", "grilled_chicken", "pasta_alla_carbonara", "eggplant_parmigiana", "salmon_plate", "chicken_salad", "pizza_margherita", "pizza_prosciutto", "pizza_truffle", "duck_ragu_pasta", "ravioli_ricotta_spinach", "beef_steak_plate", "mixed_grill", "vegetarian_arancini", "tiramisu", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1eiuu4f">
+        <inputEntry id="UnaryTests_0brgskl">
+          <text>"nogoals"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19fyz5o">
+          <text>["caprese_salad", "chicken_rice_bowl", "tofu_stir_fry", "peanut_butter_toast", "grilled_chicken", "vegetable_rice", "mediterranean_plate", "pasta_alla_carbonara", "pasta_al_pomodoro", "eggplant_parmigiana", "salmon_plate", "grilled_vegetables", "garden_salad", "chicken_salad", "pizza_margherita", "pizza_prosciutto", "pizza_truffle", "duck_ragu_pasta", "ravioli_ricotta_spinach", "beef_steak_plate", "mixed_grill", "vegetarian_arancini", "tiramisu", "avocado_toast"]</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0rlms98" name="RecommendedMealSelection">
+    <informationRequirement id="InformationRequirement_1u047hl">
+      <requiredDecision href="#Decision_0tap8hd" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0918i7w">
+      <requiredDecision href="#Decision_07tdelu" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_021zcki">
+      <requiredDecision href="#Decision_1xjdr5z" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0czmvms">
+      <requiredDecision href="#Decision_141sd4t" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1mxn6vj" hitPolicy="COLLECT">
+      <input id="InputClause_0lvezf8" label="timeFilteredMeals">
+        <inputExpression id="LiteralExpression_1fzcyzq" typeRef="string" />
+        <inputValues id="UnaryTests_1nwrb7d">
+          <text>"breakfast","lunch","dinner","dessert"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1nw7jlc" label="restrictionFilteredMeals">
+        <inputExpression id="LiteralExpression_1qltvdc" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0mokjlo">
+          <text>"vegan","vegetarian","carnivore","norestriction"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0yvx0nr" label="SafeMeals">
+        <inputExpression id="LiteralExpression_1n9gw12" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_07bwp9m">
+          <text>"dairy","gluten","peanuts","noallergy"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1gohkvl" label="goalFilteredMeals">
+        <inputExpression id="LiteralExpression_08vc43c" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1fif4rp">
+          <text>"weight_loss","muscle_gain","nogoals"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_18m76a2" label="Recommended Meals" name="recommendedMeals" typeRef="string" biodi:width="252" />
+      <rule id="DecisionRule_08bcy73">
+        <inputEntry id="UnaryTests_02uklhk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jpj4ea">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hd02lc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sqkdp1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ew5eb9">
+          <text>timeFilteredMeals[item in restrictionFilteredMeals and item in SafeMeals and item in goalFilteredMeals]</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0tap8hd">
+        <dc:Bounds height="80" width="180" x="190" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1qdzwjf" dmnElementRef="Decision_07tdelu">
+        <dc:Bounds height="80" width="180" x="570" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_01pgkki" dmnElementRef="Decision_1xjdr5z">
+        <dc:Bounds height="80" width="180" x="190" y="370" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1h7jpua" dmnElementRef="Decision_141sd4t">
+        <dc:Bounds height="80" width="180" x="570" y="370" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0gy8kb8" dmnElementRef="Decision_0rlms98">
+        <dc:Bounds height="80" width="180" x="370" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_089nre0" dmnElementRef="InformationRequirement_1u047hl">
+        <di:waypoint x="280" y="180" />
+        <di:waypoint x="430" y="220" />
+        <di:waypoint x="430" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1u95hg0" dmnElementRef="InformationRequirement_0918i7w">
+        <di:waypoint x="660" y="180" />
+        <di:waypoint x="490" y="220" />
+        <di:waypoint x="490" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_00gr2og" dmnElementRef="InformationRequirement_021zcki">
+        <di:waypoint x="280" y="370" />
+        <di:waypoint x="430" y="340" />
+        <di:waypoint x="430" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1rtg2ge" dmnElementRef="InformationRequirement_0czmvms">
+        <di:waypoint x="660" y="370" />
+        <di:waypoint x="490" y="340" />
+        <di:waypoint x="490" y="320" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
