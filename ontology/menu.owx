@@ -1,0 +1,902 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6">
+    <Prefix name="" IRI="http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Allergen"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AnimalProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CalorieLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DietType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ingredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NutProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PlantProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Profile"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TimeOfDay"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#breakfast"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#carnivore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#dairy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#dessert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#dinner"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#egg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#fruit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#gluten"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#grain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#high"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#low"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#lunch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#meat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#medium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#peanuts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#vegan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#vegatable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#vegetarian"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAllergy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCalorieLevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDietaryNeed"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isExcludedFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSuitableFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isUnsuitableFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#servedAt"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCalorieCount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isSpicy"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#carnivore"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#meat"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#high"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="601">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#low"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMaxCardinality cardinality="300">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#medium"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="301">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+            <DataMaxCardinality cardinality="600">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#vegan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#PlantProduct"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#vegetarian"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectComplementOf>
+                    <Class IRI="#meat"/>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Allergen"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AnimalProduct"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AnimalProduct"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CalorieLevel"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DietType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ingredient"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meal"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NutProduct"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NutProduct"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlantProduct"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlantProduct"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TimeOfDay"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#breakfast"/>
+        <Class IRI="#TimeOfDay"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#breakfast"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#carnivore"/>
+        <Class IRI="#DietType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#carnivore"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#meat"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dairy"/>
+        <Class IRI="#Allergen"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dairy"/>
+        <Class IRI="#AnimalProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dairy"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dessert"/>
+        <Class IRI="#TimeOfDay"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dessert"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dinner"/>
+        <Class IRI="#TimeOfDay"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#dinner"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#egg"/>
+        <Class IRI="#AnimalProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#egg"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#fruit"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#fruit"/>
+        <Class IRI="#PlantProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gluten"/>
+        <Class IRI="#Allergen"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gluten"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#grain"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#grain"/>
+        <Class IRI="#PlantProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#high"/>
+        <Class IRI="#CalorieLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#high"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="601">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#low"/>
+        <Class IRI="#CalorieLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#low"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMaxCardinality cardinality="300">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#lunch"/>
+        <Class IRI="#TimeOfDay"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#lunch"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#meat"/>
+        <Class IRI="#AnimalProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#meat"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#medium"/>
+        <Class IRI="#CalorieLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#medium"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="301">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+            <DataMaxCardinality cardinality="600">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#peanuts"/>
+        <Class IRI="#Allergen"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#peanuts"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#vegan"/>
+        <Class IRI="#DietType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#vegan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#PlantProduct"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#vegatable"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#vegatable"/>
+        <Class IRI="#PlantProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#vegetarian"/>
+        <Class IRI="#DietType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#vegetarian"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectComplementOf>
+                    <Class IRI="#meat"/>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="owl:Thing"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#meat"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="#DietType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#meat"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="#carnivore"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#PlantProduct"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="#DietType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#PlantProduct"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="#vegan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectComplementOf>
+                    <Class IRI="#meat"/>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="#DietType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <ObjectComplementOf>
+                    <Class IRI="#meat"/>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="#vegetarian"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="301">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+            <DataMaxCardinality cardinality="600">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="#CalorieLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="301">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+            <DataMaxCardinality cardinality="600">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="#medium"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="601">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="#CalorieLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMinCardinality cardinality="601">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMinCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="#high"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMaxCardinality cardinality="300">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="#CalorieLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="#Meal"/>
+            <DataMaxCardinality cardinality="300">
+                <DataProperty IRI="#hasCalorieCount"/>
+            </DataMaxCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="#low"/>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAllergy"/>
+        <Class IRI="#Profile"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAllergy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCalorieLevel"/>
+        <Class IRI="#Meal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCalorieLevel"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDietaryNeed"/>
+        <Class IRI="#Profile"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDietaryNeed"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Meal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isExcludedFor"/>
+        <Class IRI="#Ingredient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isExcludedFor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSuitableFor"/>
+        <Class IRI="#Meal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSuitableFor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isUnsuitableFor"/>
+        <Class IRI="#Meal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isUnsuitableFor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#servedAt"/>
+        <Class IRI="#Meal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#servedAt"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAllergy"/>
+        <Class IRI="#Allergen"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAllergy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCalorieLevel"/>
+        <Class IRI="#CalorieLevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCalorieLevel"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDietaryNeed"/>
+        <Class IRI="#DietType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDietaryNeed"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isExcludedFor"/>
+        <Class IRI="#Allergen"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isExcludedFor"/>
+        <Class IRI="#DietType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isExcludedFor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSuitableFor"/>
+        <Class IRI="#DietType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSuitableFor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isUnsuitableFor"/>
+        <Class IRI="#Profile"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isUnsuitableFor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#servedAt"/>
+        <Class IRI="#TimeOfDay"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#servedAt"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCalorieCount"/>
+        <Class IRI="#Meal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCalorieCount"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isSpicy"/>
+        <Class IRI="#Meal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isSpicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isExcludedFor"/>
+            <Class IRI="#peanuts"/>
+        </ObjectSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCalorieCount"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isSpicy"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>AllergyExclusionRule</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasAllergy"/>
+                <Variable IRI="/p"/>
+                <Variable IRI="/a"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Variable IRI="/m"/>
+                <Variable IRI="/i"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isExcludedFor"/>
+                <Variable IRI="/i"/>
+                <Variable IRI="/a"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isUnsuitableFor"/>
+                <Variable IRI="/m"/>
+                <Variable IRI="/p"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>DietaryExclusionRule</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasDietaryNeed"/>
+                <Variable IRI="/p"/>
+                <Variable IRI="/d"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Variable IRI="/m"/>
+                <Variable IRI="/i"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isExcludedFor"/>
+                <Variable IRI="/i"/>
+                <Variable IRI="/d"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isUnsuitableFor"/>
+                <Variable IRI="/m"/>
+                <Variable IRI="/p"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
