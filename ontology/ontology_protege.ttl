@@ -1,0 +1,1476 @@
+@prefix : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/> .
+
+<http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#requestsTime
+:requestsTime rdf:type owl:ObjectProperty ;
+              rdfs:domain :Profile ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isExcludedFor ;
+                            owl:someValuesFrom :peanuts
+                          ] ;
+              rdfs:range :TimeOfDay ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isExcludedFor ;
+                           owl:someValuesFrom :peanuts
+                         ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/hasAllergy
+:hasAllergy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Profile ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isExcludedFor ;
+                          owl:someValuesFrom :peanuts
+                        ] ;
+            rdfs:range :Allergen ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isExcludedFor ;
+                         owl:someValuesFrom :peanuts
+                       ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/hasCalorieLevel
+:hasCalorieLevel rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Meal ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isExcludedFor ;
+                               owl:someValuesFrom :peanuts
+                             ] ;
+                 rdfs:range :CalorieLevel ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExcludedFor ;
+                              owl:someValuesFrom :peanuts
+                            ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/hasDietaryNeed
+:hasDietaryNeed rdf:type owl:ObjectProperty ;
+                rdfs:domain :Profile ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExcludedFor ;
+                              owl:someValuesFrom :peanuts
+                            ] ;
+                rdfs:range :DietType ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               rdfs:domain :Meal ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] ;
+               rdfs:range :Ingredient ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isExcludedFor ;
+                            owl:someValuesFrom :peanuts
+                          ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/isExcludedFor
+:isExcludedFor rdf:type owl:ObjectProperty ;
+               rdfs:domain :Ingredient ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] ;
+               rdfs:range :Allergen ,
+                          :DietType ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isExcludedFor ;
+                            owl:someValuesFrom :peanuts
+                          ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/isSuitableFor
+:isSuitableFor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isUnsuitableFor ;
+               rdfs:domain :Meal ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] ;
+               rdfs:range :DietType ,
+                          :Profile ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isExcludedFor ;
+                            owl:someValuesFrom :peanuts
+                          ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/isUnsuitableFor
+:isUnsuitableFor rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Meal ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isExcludedFor ;
+                               owl:someValuesFrom :peanuts
+                             ] ;
+                 rdfs:range :Profile ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExcludedFor ;
+                              owl:someValuesFrom :peanuts
+                            ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/servedAt
+:servedAt rdf:type owl:ObjectProperty ;
+          rdfs:domain :Meal ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isExcludedFor ;
+                        owl:someValuesFrom :peanuts
+                      ] ;
+          rdfs:range :TimeOfDay ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/hasCalorieCount
+:hasCalorieCount rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Meal ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isExcludedFor ;
+                               owl:someValuesFrom :peanuts
+                             ] ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/isSpicy
+:isSpicy rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Meal ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] ;
+         rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Allergen
+:Allergen rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :isExcludedFor ;
+                            owl:someValuesFrom :peanuts
+                          ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/AnimalProduct
+:AnimalProduct rdf:type owl:Class ;
+               rdfs:subClassOf :Ingredient ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isExcludedFor ;
+                                 owl:someValuesFrom :peanuts
+                               ] ;
+               owl:disjointWith :NutProduct ,
+                                :PlantProduct .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/CalorieLevel
+:CalorieLevel rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :isExcludedFor ;
+                                owl:someValuesFrom :peanuts
+                              ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/DietType
+:DietType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Ingredient
+:Ingredient rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExcludedFor ;
+                              owl:someValuesFrom :peanuts
+                            ] ;
+            owl:disjointWith :PlantProduct .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Meal
+:Meal rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/NutProduct
+:NutProduct rdf:type owl:Class ;
+            rdfs:subClassOf :Ingredient ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExcludedFor ;
+                              owl:someValuesFrom :peanuts
+                            ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/PlantProduct
+:PlantProduct rdf:type owl:Class ;
+              rdfs:subClassOf :Ingredient ,
+                              [ rdf:type owl:Class ;
+                                owl:unionOf ( :PlantProduct
+                                              :dairy
+                                              :egg
+                                            )
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isExcludedFor ;
+                                owl:someValuesFrom :peanuts
+                              ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Profile
+:Profile rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :isExcludedFor ;
+                           owl:someValuesFrom :peanuts
+                         ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/TimeOfDay
+:TimeOfDay rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/breakfast
+:breakfast rdf:type owl:Class ;
+           rdfs:subClassOf :TimeOfDay ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/carnivore
+:carnivore rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasIngredient ;
+                                                        owl:someValuesFrom :meat
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :DietType ,
+                           :Meal ,
+                           [ owl:intersectionOf ( :Meal
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasIngredient ;
+                                                    owl:someValuesFrom :meat
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasIngredient ;
+                             owl:someValuesFrom :meat
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/dairy
+:dairy rdf:type owl:Class ;
+       rdfs:subClassOf :Allergen ,
+                       :AnimalProduct ,
+                       :Ingredient ,
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( :PlantProduct
+                                       :dairy
+                                       :egg
+                                     )
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isExcludedFor ;
+                         owl:someValuesFrom :peanuts
+                       ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/dessert
+:dessert rdf:type owl:Class ;
+         rdfs:subClassOf :TimeOfDay ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isExcludedFor ;
+                           owl:someValuesFrom :peanuts
+                         ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/dinner
+:dinner rdf:type owl:Class ;
+        rdfs:subClassOf :TimeOfDay ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isExcludedFor ;
+                          owl:someValuesFrom :peanuts
+                        ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/egg
+:egg rdf:type owl:Class ;
+     rdfs:subClassOf :AnimalProduct ,
+                     :Ingredient ,
+                     [ rdf:type owl:Class ;
+                       owl:unionOf ( :PlantProduct
+                                     :dairy
+                                     :egg
+                                   )
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/fruit
+:fruit rdf:type owl:Class ;
+       rdfs:subClassOf :Ingredient ,
+                       :PlantProduct ,
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( :PlantProduct
+                                       :dairy
+                                       :egg
+                                     )
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isExcludedFor ;
+                         owl:someValuesFrom :peanuts
+                       ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/gluten
+:gluten rdf:type owl:Class ;
+        rdfs:subClassOf :Allergen ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isExcludedFor ;
+                          owl:someValuesFrom :peanuts
+                        ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/grain
+:grain rdf:type owl:Class ;
+       rdfs:subClassOf :Ingredient ,
+                       :PlantProduct ,
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( :PlantProduct
+                                       :dairy
+                                       :egg
+                                     )
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isExcludedFor ;
+                         owl:someValuesFrom :peanuts
+                       ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/high
+:high rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasCalorieCount ;
+                                                   owl:minCardinality "601"^^xsd:nonNegativeInteger
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
+      rdfs:subClassOf :CalorieLevel ,
+                      :Meal ,
+                      [ owl:intersectionOf ( :Meal
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasCalorieCount ;
+                                               owl:minCardinality "601"^^xsd:nonNegativeInteger
+                                             ]
+                                           ) ;
+                        rdf:type owl:Class
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isExcludedFor ;
+                        owl:someValuesFrom :peanuts
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasCalorieCount ;
+                        owl:minCardinality "601"^^xsd:nonNegativeInteger
+                      ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/low
+:low rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasCalorieCount ;
+                                                  owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
+     rdfs:subClassOf :CalorieLevel ,
+                     :Meal ,
+                     [ owl:intersectionOf ( :Meal
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasCalorieCount ;
+                                              owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                                            ]
+                                          ) ;
+                       rdf:type owl:Class
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasCalorieCount ;
+                       owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                     ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/lunch
+:lunch rdf:type owl:Class ;
+       rdfs:subClassOf :TimeOfDay ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isExcludedFor ;
+                         owl:someValuesFrom :peanuts
+                       ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/meat
+:meat rdf:type owl:Class ;
+      rdfs:subClassOf :AnimalProduct ,
+                      :Ingredient ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isExcludedFor ;
+                        owl:someValuesFrom :peanuts
+                      ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/medium
+:medium rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasCalorieCount ;
+                                                     owl:minCardinality "301"^^xsd:nonNegativeInteger
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasCalorieCount ;
+                                                     owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :CalorieLevel ,
+                        :Meal ,
+                        [ owl:intersectionOf ( :Meal
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hasCalorieCount ;
+                                                 owl:minCardinality "301"^^xsd:nonNegativeInteger
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hasCalorieCount ;
+                                                 owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isExcludedFor ;
+                          owl:someValuesFrom :peanuts
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasCalorieCount ;
+                          owl:minCardinality "301"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasCalorieCount ;
+                          owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                        ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/peanuts
+:peanuts rdf:type owl:Class ;
+         rdfs:subClassOf :Allergen ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isExcludedFor ;
+                           owl:someValuesFrom :peanuts
+                         ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/vegan
+:vegan rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasIngredient ;
+                                                    owl:allValuesFrom :PlantProduct
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf :DietType ,
+                       :Meal ,
+                       [ owl:intersectionOf ( :Meal
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasIngredient ;
+                                                owl:allValuesFrom :PlantProduct
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isExcludedFor ;
+                         owl:someValuesFrom :peanuts
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom :PlantProduct
+                       ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/vegatable
+:vegatable rdf:type owl:Class ;
+           rdfs:subClassOf :Ingredient ,
+                           :PlantProduct ,
+                           [ rdf:type owl:Class ;
+                             owl:unionOf ( :PlantProduct
+                                           :dairy
+                                           :egg
+                                         )
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isExcludedFor ;
+                             owl:someValuesFrom :peanuts
+                           ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/vegetarian
+:vegetarian rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Meal
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasIngredient ;
+                                                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( :PlantProduct
+                                                                                           :dairy
+                                                                                           :egg
+                                                                                         )
+                                                                           ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf :DietType ,
+                            :Meal ,
+                            [ owl:intersectionOf ( :Meal
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasIngredient ;
+                                                     owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                         owl:unionOf ( :PlantProduct
+                                                                                       :dairy
+                                                                                       :egg
+                                                                                     )
+                                                                       ]
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Carnivore_Diet_Instance
+:Carnivore_Diet_Instance rdf:type owl:NamedIndividual ,
+                                  :Allergen ,
+                                  :DietType ,
+                                  :Meal ,
+                                  :carnivore ,
+                                  [ owl:intersectionOf ( :Meal
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hasIngredient ;
+                                                           owl:someValuesFrom :meat
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasIngredient ;
+                                    owl:someValuesFrom :meat
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :isExcludedFor ;
+                                    owl:someValuesFrom :peanuts
+                                  ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Gluten_Allergen_Instance
+:Gluten_Allergen_Instance rdf:type owl:NamedIndividual ,
+                                   :Allergen ,
+                                   :DietType ,
+                                   :gluten ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isExcludedFor ;
+                                     owl:someValuesFrom :peanuts
+                                   ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Guest_C
+:Guest_C rdf:type owl:NamedIndividual ,
+                  :Meal ,
+                  :Profile ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ] ;
+         :hasDietaryNeed :Carnivore_Diet_Instance ;
+         :isSuitableFor :tofu_stir_fry_meal .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Guest_G
+:Guest_G rdf:type owl:NamedIndividual ,
+                  :Meal ,
+                  :Profile ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ] ;
+         :hasAllergy :Gluten_Allergen_Instance ;
+         :isSuitableFor :pasta_al_pomodoro_meal .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Guest_T
+:Guest_T rdf:type owl:NamedIndividual ,
+                  :DietType ,
+                  :Meal ,
+                  :Profile ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ] ;
+         :requestsTime :Lunch_Instance ;
+         :isUnsuitableFor :caprese_salad .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Guest_V
+:Guest_V rdf:type owl:NamedIndividual ,
+                  :Meal ,
+                  :Profile ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ] ;
+         :hasDietaryNeed :Vegan_Diet_Instance ;
+         :isSuitableFor :Tiramisu .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Lunch_Instance
+:Lunch_Instance rdf:type owl:NamedIndividual ,
+                         :TimeOfDay ,
+                         :lunch ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isExcludedFor ;
+                           owl:someValuesFrom :peanuts
+                         ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Tiramisu
+:Tiramisu rdf:type owl:NamedIndividual ,
+                   :DietType ,
+                   :Meal ,
+                   :Profile ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :isExcludedFor ;
+                     owl:someValuesFrom :peanuts
+                   ] ;
+          :hasIngredient :mascarpone ;
+          :isUnsuitableFor :Guest_V ;
+          :hasCalorieCount 822 .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#Vegan_Diet_Instance
+:Vegan_Diet_Instance rdf:type owl:NamedIndividual ,
+                              :Allergen ,
+                              :DietType ,
+                              :Meal ,
+                              :vegan ,
+                              [ owl:intersectionOf ( :Meal
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasIngredient ;
+                                                       owl:allValuesFrom :PlantProduct
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isExcludedFor ;
+                                owl:someValuesFrom :peanuts
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasIngredient ;
+                                owl:allValuesFrom :PlantProduct
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasIngredient ;
+                                owl:allValuesFrom [ rdf:type owl:Class ;
+                                                    owl:unionOf ( :PlantProduct
+                                                                  :dairy
+                                                                  :egg
+                                                                )
+                                                  ]
+                              ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#caprese_salad
+:caprese_salad rdf:type owl:NamedIndividual ,
+                        :Meal ,
+                        :Profile ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isExcludedFor ;
+                          owl:someValuesFrom :peanuts
+                        ] ;
+               :isSuitableFor :Guest_T ;
+               :servedAt :Lunch_Instance .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#mascarpone
+:mascarpone rdf:type owl:NamedIndividual ,
+                     :Allergen ,
+                     :AnimalProduct ,
+                     :Ingredient ,
+                     :dairy ,
+                     [ rdf:type owl:Class ;
+                       owl:unionOf ( :PlantProduct
+                                     :dairy
+                                     :egg
+                                   )
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] ;
+            :isExcludedFor :Vegan_Diet_Instance .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#pasta_al_pomodoro_meal
+:pasta_al_pomodoro_meal rdf:type owl:NamedIndividual ,
+                                 :DietType ,
+                                 :Meal ,
+                                 :Profile ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isExcludedFor ;
+                                   owl:someValuesFrom :peanuts
+                                 ] ;
+                        :hasIngredient :pasta_ingr ;
+                        :isUnsuitableFor :Guest_G ;
+                        :hasCalorieCount 594 .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#pasta_ingr
+:pasta_ingr rdf:type owl:NamedIndividual ,
+                     :Ingredient ,
+                     :PlantProduct ,
+                     :grain ,
+                     [ rdf:type owl:Class ;
+                       owl:unionOf ( :PlantProduct
+                                     :dairy
+                                     :egg
+                                   )
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] ;
+            :isExcludedFor :Gluten_Allergen_Instance .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#tofu_ingr
+:tofu_ingr rdf:type owl:NamedIndividual ,
+                    :Ingredient ,
+                    :PlantProduct ,
+                    [ rdf:type owl:Class ;
+                      owl:unionOf ( :PlantProduct
+                                    :dairy
+                                    :egg
+                                  )
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :isExcludedFor ;
+                      owl:someValuesFrom :peanuts
+                    ] ;
+           :isExcludedFor :Carnivore_Diet_Instance .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#tofu_stir_fry_meal
+:tofu_stir_fry_meal rdf:type owl:NamedIndividual ,
+                             :DietType ,
+                             :Meal ,
+                             :Profile ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isExcludedFor ;
+                               owl:someValuesFrom :peanuts
+                             ] ;
+                    :hasIngredient :tofu_ingr ;
+                    :isUnsuitableFor :Guest_C ;
+                    :hasCalorieCount 994 .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Guest_P
+:Guest_P rdf:type owl:NamedIndividual ,
+                  :Meal ,
+                  :Profile ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ] ;
+         :hasAllergy :p_allergen ;
+         :isSuitableFor :Peanut_Butter_Toast_Meal .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Peanut_Butter_Ingr
+:Peanut_Butter_Ingr rdf:type owl:NamedIndividual ,
+                             :Ingredient ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isExcludedFor ;
+                               owl:someValuesFrom :peanuts
+                             ] ;
+                    :isExcludedFor :p_allergen .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Peanut_Butter_Toast_Meal
+:Peanut_Butter_Toast_Meal rdf:type owl:NamedIndividual ,
+                                   :DietType ,
+                                   :Meal ,
+                                   :Profile ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isExcludedFor ;
+                                     owl:someValuesFrom :peanuts
+                                   ] ;
+                          :hasIngredient :Peanut_Butter_Ingr ;
+                          :isUnsuitableFor :Guest_P ;
+                          :hasCalorieCount 853 .
+
+
+###  http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/p_allergen
+:p_allergen rdf:type owl:NamedIndividual ,
+                     :Allergen ,
+                     :DietType ,
+                     :peanuts ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isExcludedFor ;
+                       owl:someValuesFrom :peanuts
+                     ] .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:someValuesFrom :meat
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :DietType
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:someValuesFrom :meat
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:someValuesFrom :meat
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :carnivore
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:someValuesFrom :meat
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasIngredient ;
+                    owl:someValuesFrom :meat
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:someValuesFrom :meat
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom :PlantProduct
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :DietType
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom :PlantProduct
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom :PlantProduct
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :vegan
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom :PlantProduct
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom :PlantProduct
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasIngredient ;
+                    owl:allValuesFrom :PlantProduct
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :PlantProduct
+                                                           :dairy
+                                                           :egg
+                                                         )
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :DietType
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :PlantProduct
+                                                           :dairy
+                                                           :egg
+                                                         )
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :PlantProduct
+                                                           :dairy
+                                                           :egg
+                                                         )
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :vegetarian
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:complementOf :meat
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :DietType
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:complementOf :meat
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:complementOf :meat
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasIngredient ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:complementOf :meat
+                                           ]
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasIngredient ;
+                    owl:allValuesFrom [ rdf:type owl:Class ;
+                                        owl:complementOf :meat
+                                      ]
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "301"^^xsd:nonNegativeInteger
+                       ]
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CalorieLevel
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "301"^^xsd:nonNegativeInteger
+                       ]
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "301"^^xsd:nonNegativeInteger
+                       ]
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :medium
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "301"^^xsd:nonNegativeInteger
+                       ]
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "301"^^xsd:nonNegativeInteger
+                       ]
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasCalorieCount ;
+                    owl:minCardinality "301"^^xsd:nonNegativeInteger
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "301"^^xsd:nonNegativeInteger
+                       ]
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasCalorieCount ;
+                    owl:maxCardinality "600"^^xsd:nonNegativeInteger
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "601"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CalorieLevel
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "601"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "601"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :high
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "601"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:minCardinality "601"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasCalorieCount ;
+                    owl:minCardinality "601"^^xsd:nonNegativeInteger
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CalorieLevel
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Meal
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :low
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :isExcludedFor ;
+                    owl:someValuesFrom :peanuts
+                  ]
+] .
+
+
+[ owl:intersectionOf ( :Meal
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasCalorieCount ;
+                         owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasCalorieCount ;
+                    owl:maxCardinality "300"^^xsd:nonNegativeInteger
+                  ]
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasIngredient ;
+  owl:allValuesFrom :PlantProduct ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasIngredient ;
+                    owl:allValuesFrom [ rdf:type owl:Class ;
+                                        owl:unionOf ( :PlantProduct
+                                                      :dairy
+                                                      :egg
+                                                    )
+                                      ]
+                  ]
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:m rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:t rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:p rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:a rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:i rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:d rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "TimeSuitabilityRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :servedAt ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :t
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :requestsTime ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :t
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :isSuitableFor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "AllergyExclusionRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAllergy ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :a
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasIngredient ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :i
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :isExcludedFor ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :i ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :a
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :isUnsuitableFor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "DietaryExclusionRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDietaryNeed ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :d
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasIngredient ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :i
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :isExcludedFor ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :i ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :d
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :isUnsuitableFor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
