@@ -1,0 +1,98 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ex: <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:ProfileConstraintShape
+    a sh:NodeShape ;
+    sh:targetClass ex:Profile ;
+    sh:name "Profile must have at least one constraint" ;
+
+    sh:or ( 
+        [
+            sh:path ex:hasAllergy ;
+            sh:minCount 1 ;
+            sh:message "Profile must list at least one allergy OR one dietary need." ;
+        ]
+        [
+            sh:path ex:hasDietaryNeed ;
+            sh:minCount 1 ;
+            sh:message "Profile must list at least one dietary need OR one allergy." ;
+        ]
+    ) .
+
+#
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#> .
+
+:MealShape
+    a sh:NodeShape ;
+    sh:targetClass :Meal ;
+    sh:property [
+        sh:path :hasIngredient ;
+        sh:minCount 1 ;
+        sh:message "Every meal  must have at least one ingredient.;
+    ] .
+
+:IngredientShape
+    a sh:NodeShape ;
+    sh:targetClass :Ingredient ;
+    sh:property [
+        sh:path :calories ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:message "Every ingredient must have a calorie amount." ;
+    ] .
+
+:VegetarianMealShape
+    a sh:NodeShape ;
+    sh:targetClass :Meal ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:prefixes (
+            [ sh:prefix "" ; sh:namespace "http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6#" ]
+        ) ;
+        sh:message "The food is marked as vegetarian but has ingredients that contain meat. ;
+        sh:construct """
+            CONSTRUCT {
+               ?this :invalid "Contains meat" .
+            }
+            WHERE {
+               ?this :isVegetarian true .
+               ?this :hasIngredient ?i .
+               ?i :isMeat true .
+            }
+        """ ;
+    ] .
+
+:AllergyShape
+    a sh:NodeShape ;
+    sh:targetClass :GuestProfile ;
+    sh:property [
+        sh:path :hasAllergy ;
+        sh:message "The customer's profile must include their declared allergies";
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:message "The customer is allergic, but the recommended food contains the allergen" ;
+        sh:construct """
+            CONSTRUCT {
+               ?this :invalidMeal ?meal .
+            }
+            WHERE {
+               ?this :hasAllergy ?allergen .
+               ?meal :hasIngredient ?i .
+               ?i :containsAllergen ?allergen .
+            }
+        """ ;
+    ] .
+
+:CalorieMealShape
+    a sh:NodeShape ;
+    sh:targetClass :Meal ;
+    sh:property [
+        sh:path :totalCalories ;
+        sh:maxExclusive 500 ;
+        sh:message "The total calories must not exceed 500 for customers following a low-calorie diet." ;
+    ] .
+
