@@ -1,0 +1,150 @@
+#meals with calories
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?mealName ?calories WHERE {
+    ?meal a :Meal .
+    OPTIONAL { ?meal :hasCalorieCount ?calories }
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+}
+ORDER BY DESC(?calories)
+
+
+#meals with ingridients
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?mealName ?ingredientName WHERE {
+    ?meal a :Meal .
+    ?meal :hasIngredient ?ingredient .
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+    BIND(STRAFTER(STR(?ingredient), "/") AS ?ingredientName)
+}
+ORDER BY ?mealName
+
+#unsuitable meals for guests
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?mealName ?guestName WHERE {
+    ?meal :isUnsuitableFor ?guest .
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+    BIND(STRAFTER(STR(?guest), "/") AS ?guestName)
+}
+ORDER BY ?guestName
+
+#suitable meals for guests
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?mealName ?guestName WHERE {
+    ?meal :isSuitableFor ?guest .
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+    BIND(STRAFTER(STR(?guest), "/") AS ?guestName)
+}
+ORDER BY ?guestName
+
+#guest preferences analysis
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?guestName ?preferenceType ?preferenceName WHERE {
+    ?guest a :Profile .
+    
+    {
+        ?guest :hasDietaryNeed ?pref .
+        BIND("Dietary Need" AS ?preferenceType)
+    }
+    UNION
+    {
+        ?guest :hasAllergy ?pref .
+        BIND("Allergy" AS ?preferenceType)
+    }
+    
+    BIND(STRAFTER(STR(?guest), "/") AS ?guestName)
+    BIND(STRAFTER(STR(?pref), "/") AS ?preferenceName)
+}
+ORDER BY ?guestName ?preferenceType
+
+#excluded ingredients
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?ingredientName ?excludedFor WHERE {
+    ?ingredient :isExcludedFor ?restriction .
+    BIND(STRAFTER(STR(?ingredient), "/") AS ?ingredientName)
+    BIND(STRAFTER(STR(?restriction), "/") AS ?excludedFor)
+}
+ORDER BY ?ingredientName
+
+#meals by serving time
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?mealName ?timeName WHERE {
+    ?meal a :Meal .
+    ?meal :servedAt ?time .
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+    BIND(STRAFTER(STR(?time), "/") AS ?timeName)
+}
+ORDER BY ?timeName
+
+#personalized meal recommendation
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT DISTINCT ?mealName ?calories WHERE {
+    # Specify the guest
+    VALUES ?guestURI { <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Guest_V> }
+    
+    # Find suitable meals
+    ?meal a :Meal .
+    OPTIONAL { ?meal :hasCalorieCount ?calories }
+    
+    # Ensure meal is NOT unsuitable
+    FILTER NOT EXISTS { ?meal :isUnsuitableFor ?guestURI }
+    
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+}
+ORDER BY ?calories
+
+
+#diet type statistics
+ PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?dietType (COUNT(DISTINCT ?meal) AS ?mealCount) WHERE {
+    ?meal a :Meal .
+    ?meal a ?type .
+    
+    FILTER(?type IN (:vegan, :vegetarian, :carnivore))
+    
+    BIND(STRAFTER(STR(?type), "/") AS ?dietType)
+}
+GROUP BY ?dietType
+ORDER BY DESC(?mealCount)
+
+#comprehensive_safety_analysis
+
+PREFIX : <http://www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/>
+
+SELECT ?mealName ?guestName ?problematicIngredient ?reason WHERE {
+    ?meal :isUnsuitableFor ?guest .
+    ?meal :hasIngredient ?ingredient .
+    
+    {
+        # Case 1: Allergy-based exclusion
+        ?guest :hasAllergy ?allergen .
+        ?ingredient :isExcludedFor ?allergen .
+        BIND(STRAFTER(STR(?allergen), "/") AS ?reason)
+    }
+    UNION
+    {
+        # Case 2: Dietary restriction-based exclusion
+        ?guest :hasDietaryNeed ?diet .
+        ?ingredient :isExcludedFor ?diet .
+        BIND(STRAFTER(STR(?diet), "/") AS ?reason)
+    }
+    
+    BIND(STRAFTER(STR(?meal), "/") AS ?mealName)
+    BIND(STRAFTER(STR(?guest), "/") AS ?guestName)
+    BIND(STRAFTER(STR(?ingredient), "/") AS ?problematicIngredient)
+}
+ORDER BY ?guestName ?mealName
