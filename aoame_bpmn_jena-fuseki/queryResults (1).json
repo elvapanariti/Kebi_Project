@@ -1,0 +1,27 @@
+{
+  "head": {
+    "vars": [
+      "profileName",
+      "mealName",
+      "querySnippet"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "profileName": {
+          "type": "literal",
+          "value": "/www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/Guest_T"
+        },
+        "mealName": {
+          "type": "literal",
+          "value": "/www.semanticweb.org/user/ontologies/2025/10/untitled-ontology-6/caprese_salad"
+        },
+        "querySnippet": {
+          "type": "literal",
+          "value": "PREFIX ex: <http://www.semanticweb.org/user/ontolo"
+        }
+      }
+    ]
+  }
+}
